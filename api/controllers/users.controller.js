@@ -4,8 +4,9 @@ const { handleError } = require('../utils')
 module.exports = {
   getAllUsers,
   getUserById,
+  createUser,
   deleteUserById,
-  updateUser
+  updateUser,
 }
 
 function getAllUsers (req, res) {
