@@ -7,13 +7,14 @@ module.exports = {
     updateRoom,
     createRoom,
     deleteRoomById
-  }
+    }
 
   function getAllRooms (req, res) {
     RoomModel
-      .find()
+      .find(req.query)
       .then(response => res.json(response))
       .catch((err) => handleError(err, res))
+ 
   }
   
   function getRoomById (req, res) {

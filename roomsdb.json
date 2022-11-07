@@ -1,23 +1,26 @@
 [
     {
-        "RoomNumber": 105,
-        "RoomFloor": 1,
-        "TypeOfRoom": "Standard",
-        "Occupied": false,
-        "Prepared":true
+        "roomNumber": 105,
+        "roomFloor": 1,
+        "typeOfRoom": "Standard",
+        "occupied": false,
+        "prepared":true,
+        "capacity": 2
     },
     {
-        "RoomNumber": 205,
-        "RoomFloor": 2,
-        "TypeOfRoom": "Deluxe",
-        "Occupied": true,
-        "Prepared":false
+        "roomNumber": 205,
+        "roomFloor": 2,
+        "typeOfRoom": "Deluxe",
+        "occupied": true,
+        "prepared":false,
+        "capacity": 3
     },
     {
-        "RoomNumber": 405,
-        "RoomFloor": 4,
-        "TypeOfRoom": "Suite",
-        "Occupied": false,
-        "Prepared":false
+        "roomNumber": 405,
+        "roomFloor": 4,
+        "typeOfRoom": "Suite",
+        "occupied": false,
+        "prepared":false,
+        "capacity": 5
     }
 ]

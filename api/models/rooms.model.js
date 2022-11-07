@@ -1,24 +1,30 @@
 const mongoose = require('mongoose')
 
 const roomSchema = new mongoose.Schema({
-  RoomNumber: {
+  roomNumber: {
     type: Number,
     required: [true, 'Room number is required']
   },
-  RoomFloor: {
+  roomFloor: {
     type: Number,
     required: [true, 'Room floor is required']
   },
-  TypeOfRoom:{
+  typeOfRoom:{
     type: String
   },
-  Occupied:{
+  occupied:{
     type: Boolean,
     required: [true, 'Is it occupied?']
   },
-  Prepared:{
+  prepared:{
     type:Boolean,
     required: [true, 'Is it prepared?']
+  },
+  capacity:{
+    type:Number,
+    max:5,
+    min:1,
+    required:true
   }
 })
 

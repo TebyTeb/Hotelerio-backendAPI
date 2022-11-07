@@ -6,7 +6,7 @@ getAllRooms,
 getRoomById,
 updateRoom,
 createRoom,
-deleteRoomById
+deleteRoomById,
 } = require('../controllers/rooms.controller')
 
 router.get('/',authUser, getAllRooms)
@@ -14,5 +14,6 @@ router.get('/:id',authUser, getRoomById)
 router.post('/',authUser, createRoom)
 router.put('/:id',authUser, updateRoom)
 router.delete('/:id',authUser, deleteRoomById)
+
 
 module.exports = router

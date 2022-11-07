@@ -6,7 +6,8 @@ const reservSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         required: true
     },
-    Room: {
+    
+    room: {
         type:mongoose.Schema.Types.ObjectId,
         required: true
     } ,
