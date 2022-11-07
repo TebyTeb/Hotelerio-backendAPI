@@ -8,7 +8,7 @@ deleteUserById,
 updateUser
 } = require('../controllers/users.controller')
 
-router.get('/', getAllUsers)
+router.get('/',authUser, getAllUsers)
 router.get('/:id',authUser, getUserById)
 router.put('/:id',authUser, updateUser)
 router.delete('/:id',authUser, deleteUserById)
