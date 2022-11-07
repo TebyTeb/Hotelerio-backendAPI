@@ -1,3 +1,23 @@
 [
-    
+    {
+        "RoomNumber": 105,
+        "RoomFloor": 1,
+        "TypeOfRoom": "standard",
+        "Occupied": false,
+        "Prepared":true
+    },
+    {
+        "RoomNumber": 205,
+        "RoomFloor": 2,
+        "TypeOfRoom": "deluxe",
+        "Occupied": true,
+        "Prepared":false
+    },
+    {
+        "RoomNumber": 405,
+        "RoomFloor": 4,
+        "TypeOfRoom": "Suite",
+        "Occupied": false,
+        "Prepared":false
+    }
 ]
