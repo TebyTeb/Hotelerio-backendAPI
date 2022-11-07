@@ -3,16 +3,20 @@ const companionSchema = require('./companion.model')
 
 const reservSchema = new mongoose.Schema({
     client:{
-        type:mongoose.Schema.Types.ObjectId
+        type:mongoose.Schema.Types.ObjectId,
+        required: true
     },
     Room: {
-        type:mongoose.Schema.Types.ObjectId
+        type:mongoose.Schema.Types.ObjectId,
+        required: true
     } ,
     checkin:{
-        type: Date
+        type: Date,
+        required: true
     },
     checkout:{
-        type:Date
+        type:Date,
+        required: true
     },
     companions:[companionSchema]
 

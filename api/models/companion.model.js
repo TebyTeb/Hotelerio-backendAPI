@@ -2,17 +2,18 @@ const mongoose = require('mongoose')
 
 const companionSchema = new mongoose.Schema({
     name:{
-        type:String
+        type:String,
+        required: true
     },
     Surname:{
-        type:String
+        type:String,
+        required: true
     },
     id:{
-        type:String
+        type:String,
+        required: true
     }
 })
 
 
 module.exports = companionSchema
-
-
