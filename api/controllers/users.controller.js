@@ -3,7 +3,6 @@ const { handleError } = require('../utils')
 
 
 function getAllUsers (req, res) {
-  console.log("holaaaaa")
   UserModel
     .find()
     .then(response => res.json(response))

@@ -4,6 +4,7 @@ const express = require('express')  // Brings Express Router framework
 const cors = require('cors')  // Manages cross-origin requests
 const mongoose = require('mongoose') // Allows petitions to database
 const morgan = require('morgan') // Logger 
+const { queryParser } = require('express-query-parser')
 
 ;(async function () {
   // MONGOOSE
@@ -22,7 +23,14 @@ const morgan = require('morgan') // Logger
       .use(cors())
       .use(morgan('combined')) // Show log for every request in "combined" format.
       .use(express.json()) // Parses .json format into js objects 
+      .use(queryParser({
+        parseNull: false,
+        parseUndefined: false,
+        parseBoolean: true,
+        parseNumber: true
+      }))
       .use('/api', require('./api/routes')) // If we get a petition with "/api..." in it, it will call "./api/routes" and execute index.js
+      
 
     // Init server
     const PORT = process.env.PORT || 2222

@@ -11,9 +11,10 @@ module.exports = {
     }
 
   function getAllRooms (req, res) {
-    RoomModel
-      .find(req.query)
-      .then(response => res.json(response))
+    RoomModel.find(req.query)
+      .then(response=>{
+        res.json(response)}
+      )
       .catch((err) => handleError(err, res))
  
   }
@@ -48,20 +49,20 @@ module.exports = {
   }
 
   function getAvailable (req, res) {
-   RoomModel
-      .find({occupied: false} )
-      .then(response =>
-        {console.log(response)
-          let capacity = req.query.capacity
-          if(capacity !== undefined){
-         let filter =  response.filter(e=>{
-              return e.capacity>= req.query.capacity
-            })
-            res.json(filter)
-          }else{
+       RoomModel.find(req.query)
+      .then((response) => {
+        console.log(response.query)
             res.json(response)
-          }
-        }) 
+          })
+        // }) 
       .catch((err) => handleError(err, res))
- 
   }
+
+   //   let capacity = response.map(e => e.capacity)
+        //   console.log(capacity)
+        //   if(capacity !== undefined){
+        //  let filter =  response.filter(e=>{
+        //       return e.capacity>= req.query.capacity
+        //     })
+        //     res.json(filter)
+        //   }else{
