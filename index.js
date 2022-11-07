@@ -7,7 +7,7 @@ const cors = require('cors')  // Manages cross-origin requests
 const mongoose = require('mongoose') // Allows petitions to database
 const morgan = require('morgan') // Logger 
 
-(async function () {
+;(async function () {
   // MONGOOSE
   try {
     await mongoose.connect(process.env.MONGO_URL, {
