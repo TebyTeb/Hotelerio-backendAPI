@@ -19,7 +19,6 @@ const userSchema = new mongoose.Schema({
   reservation:{
     type:mongoose.Schema.Types.ObjectId,
     ref:'reservations',
-
   },
   email: {
     type: String,

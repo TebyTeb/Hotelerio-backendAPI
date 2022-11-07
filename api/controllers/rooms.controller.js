@@ -1,36 +1,37 @@
-const UserModel = require('../models/rooms.model')
+const RoomModel = require('../models/rooms.model')
 const { handleError } = require('../utils')
 
 module.exports = {
     getAllRooms,
     getRoomById,
     updateRoom,
+    createRoom,
     deleteRoomById
   }
 
   function getAllRooms (req, res) {
-    UserModel
+    RoomModel
       .find()
       .then(response => res.json(response))
       .catch((err) => handleError(err, res))
   }
   
   function getRoomById (req, res) {
-    UserModel
+    RoomModel
       .findById(req.params.id)
       .then(response => res.json(response))
       .catch((err) => handleError(err, res))
   }
   
   function deleteRoomById (req, res) {
-    UserModel
+    RoomModel
       .remove({ _id: req.params.id })
       .then(response => res.json(response))
       .catch(err => handleError(err, res))
   }
   
   function updateRoom (req, res) {
-    UserModel
+    RoomModel
       .findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true
@@ -38,4 +39,8 @@ module.exports = {
       .then(response => res.json(response))
       .catch((err) => handleError(err, res))
   }
-  
+  function createRoom (req, res){
+    RoomModel.create(req.body)
+    .then((room)=> res.json(room))
+    .catch((err) => res.json(err))
+  }

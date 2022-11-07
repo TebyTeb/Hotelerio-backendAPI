@@ -1,14 +1,6 @@
 const UserModel = require('../models/users.model')
 const { handleError } = require('../utils')
 
-module.exports = {
-  getAllUsers,
-  getUserById,
-  createUser,
-  deleteUserById,
-  updateUser,
-}
-
 function getAllUsers (req, res) {
   UserModel
     .find()
@@ -38,4 +30,11 @@ function updateUser (req, res) {
     })
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
+}
+
+module.exports = {
+  getAllUsers,
+  getUserById,
+  deleteUserById,
+  updateUser
 }
