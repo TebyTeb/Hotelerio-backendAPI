@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const UserModel = require('../models/users.model')
-const RoomModel = require('../models/rooms.model')
+
 
 // Authenticate Middleware
 function authUser (req, res, next) {
