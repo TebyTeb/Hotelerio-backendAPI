@@ -2,14 +2,14 @@
     {
         "RoomNumber": 105,
         "RoomFloor": 1,
-        "TypeOfRoom": "standard",
+        "TypeOfRoom": "Standard",
         "Occupied": false,
         "Prepared":true
     },
     {
         "RoomNumber": 205,
         "RoomFloor": 2,
-        "TypeOfRoom": "deluxe",
+        "TypeOfRoom": "Deluxe",
         "Occupied": true,
         "Prepared":false
     },

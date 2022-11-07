@@ -11,7 +11,7 @@ const {
 
 router.get('/', authUser, getAllReservs)
 router.get('/:id', authUser, getReservById)
-router.post('/:id', authUser, createReserv)
+router.post('/', authUser, createReserv)
 router.put('/:id', authUser,updateReserv)
 router.delete('/:id', authUser, deleteReservById)
 
