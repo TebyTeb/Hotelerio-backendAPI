@@ -6,7 +6,8 @@ module.exports = {
     getRoomById,
     updateRoom,
     createRoom,
-    deleteRoomById
+    deleteRoomById,
+    getByCapacity
     }
 
   function getAllRooms (req, res) {
@@ -44,4 +45,22 @@ module.exports = {
     RoomModel.create(req.body)
     .then((room)=> res.json(room))
     .catch((err) => res.json(err))
+  }
+
+  function getByCapacity (req, res) {
+   RoomModel
+      .find({occupied:false} )
+      .then(response =>
+        {console.log(req.query.capacity)
+          if(req.query.capacity !==null){
+         let filter =  response.filter(e=>{
+              return e.capacity>= req.query.capacity
+            })
+            res.json(filter)
+          }else{
+            res.json(response)
+          }
+        }) 
+      .catch((err) => handleError(err, res))
+ 
   }

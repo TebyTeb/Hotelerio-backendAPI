@@ -7,9 +7,11 @@ getRoomById,
 updateRoom,
 createRoom,
 deleteRoomById,
+getByCapacity
 } = require('../controllers/rooms.controller')
 
 router.get('/',authUser, getAllRooms)
+router.get('/available',authUser, getByCapacity)
 router.get('/:id',authUser, getRoomById)
 router.post('/',authUser, createRoom)
 router.put('/:id',authUser, updateRoom)
