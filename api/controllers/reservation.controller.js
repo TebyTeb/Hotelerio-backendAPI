@@ -1,4 +1,5 @@
 const ReservModel = require('../models/reservation.model')
+const RoomModel = require('../models/rooms.model')
 const { handleError } = require('../utils')
 
 
@@ -34,9 +35,30 @@ function updateReserv(req, res) {
 }
 
 function createReserv(req, res) {
-    ReservModel
-        .create(req.body)
-        .then((room) => res.json(room))
+    RoomModel.findById(req.body.room)
+        .then(room => {
+            if (room.occupied === true) {
+                res.json('Already Occupied')
+            } else {
+                let reserv = {
+                    client: res.locals.user.id,
+                    room: req.body.room,
+                    checkin: req.body.checkin,
+                    checkout: req.body.checkout,
+                    companions: req.body.companions
+                }
+                ReservModel
+                    .create(reserv)
+                    .then((result) => {
+                        room.occupied = true
+                        room.save()
+                            .then(res.json(result))
+                            .catch((err) => res.json(err))
+
+                    })
+                    .catch((err) => res.json(err))
+            }
+        })
         .catch((err) => res.json(err))
 }
 
