@@ -2,24 +2,24 @@ const mongoose = require('mongoose')
 const companionSchema = require('./companion.model')
 
 const reservSchema = new mongoose.Schema({
-    client:{
-        type:mongoose.Schema.Types.ObjectId,
+    client: {
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
-    
+
     room: {
-        type:mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
-    } ,
-    checkin:{
+    },
+    checkin: {
         type: Date,
         required: true
     },
-    checkout:{
-        type:Date,
+    checkout: {
+        type: Date,
         required: true
     },
-    companions:[companionSchema]
+    companions: [companionSchema]
 
 })
 
