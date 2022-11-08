@@ -19,6 +19,24 @@ function authUser (req, res, next) {
   }
 }
 
+function adminCheck (req, res, next) {
+  if (res.locals.user.role === 'admin'){
+    next()
+  } else {
+    res.status(401).json('Not authorized')
+  }
+}
+
+function roleCheck (req, res, next) {
+  if (res.locals.user.role === 'admin' || res.locals.user._id.toString() === req.params.id) {
+    next()
+  } else {
+    res.status(403).json('Not Authorized')
+  }
+}
+
 module.exports = {
-  authUser
+  authUser,
+  adminCheck,
+  roleCheck
 }
