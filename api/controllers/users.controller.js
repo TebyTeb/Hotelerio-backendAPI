@@ -5,7 +5,7 @@ const { handleError } = require('../utils')
 
 function getAllUsers(req, res) {
   UserModel
-    .find()
+    .find(req.query)
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
 }

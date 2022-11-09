@@ -1,5 +1,6 @@
 const RoomModel = require('../models/rooms.model')
 const ReservModel = require('../models/reservation.model')
+const CompanionModel = require('../models/companion.model')
 const { handleError } = require('../utils')
 
 module.exports = {
@@ -9,7 +10,8 @@ module.exports = {
   createRoom,
   deleteRoomById,
   getAvailable,
-  checkAvailable
+  checkAvailable,
+  getOccupants
 }
 
 function getAllRooms(req, res) {
@@ -73,13 +75,35 @@ function checkAvailable(req, res) {
   const userCheckout = new Date(req.body.checkout)
 
   ReservModel
-    .find({ $or: [{ $and: [{ checkin: { $lte: userCheckin } }, { checkout: { $gte: userCheckin } }] }, { $and: [{ checkin: { $lte: userCheckout } }, { checkout: { $gte: userCheckout } }] }] })
+    .find({
+      $or: [
+        { $and: [{ checkin: { $gte: userCheckin } }, { checkin: { $lte: userCheckout } }] },
+        { $and: [{ checkout: { $gte: userCheckin } }, { checkout: { $lte: userCheckout } }] },
+        { $and: [{ checkin: { $lte: userCheckin } }, { checkout: { $gte: userCheckout } }] },
+        { $and: [{ checkin: { $gte: userCheckin } }, { checkout: { $lte: userCheckout } }] }
+      ]
+    })
     .then(result => {
       const roomIds = result.map(el => el.room.toString())
       RoomModel
-        .find({_id: {$nin: roomIds}})
+        .find({ _id: { $nin: roomIds } })
         .then(result => res.json(result))
         .catch((err) => handleError(err, res))
     })
     .catch((err) => handleError(err, res))
+}
+
+function getOccupants(req,res){
+  ReservModel.find({room: req.params.roomid})
+  .then(response =>{
+    console.log(response.companions)
+    let guests = {}
+    guests.client = res.locals.user.name+' '+res.locals.user.surname
+    guests.companions = CompanionModel.find()
+    
+    
+    
+    response.companions
+    res.json(guests)
+  })
 }

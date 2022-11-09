@@ -5,11 +5,11 @@ const companionSchema = new mongoose.Schema({
         type:String,
         required: true
     },
-    Surname:{
+    surname:{
         type:String,
         required: true
     },
-    id:{
+    identification:{
         type:String,
         required: true
     }
