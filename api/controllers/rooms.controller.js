@@ -9,7 +9,6 @@ module.exports = {
   updateRoom,
   createRoom,
   deleteRoomById,
-  getAvailable,
   checkAvailable,
   getOccupants
 }
@@ -51,28 +50,10 @@ function createRoom(req, res) {
     .catch((err) => res.json(err))
 }
 
-function getAvailable(req, res) {
-  RoomModel
-    .find({ occupied: false })
-    .then(response => {
-      let capacity = response.map(e => e.capacity)
-      if (capacity !== undefined) {
-        let filter = response.filter(e => {
-          return e.capacity >= req.query.capacity
-        })
-        res.json(filter)
-      } else {
-        res.json(response)
-      }
-    })
-    .catch((err) => handleError(err, res))
-
-}
-
 //Filter using queries, gte(greatherThanOrEqualTo), lte(LesserThanOrEqualTo)
 function checkAvailable(req, res) {
-  const userCheckin = new Date(req.body.checkin)
-  const userCheckout = new Date(req.body.checkout)
+  const userCheckin = new Date(req.query.checkin)
+  const userCheckout = new Date(req.query.checkout)
 
   ReservModel
     .find({
@@ -94,16 +75,12 @@ function checkAvailable(req, res) {
 }
 
 function getOccupants(req,res){
-  ReservModel.find({room: req.params.roomid})
+  ReservModel.findOne({room: req.params.roomid})
   .then(response =>{
     console.log(response.companions)
     let guests = {}
     guests.client = res.locals.user.name+' '+res.locals.user.surname
-    guests.companions = CompanionModel.find()
-    
-    
-    
-    response.companions
+    guests.companions = response.companions
     res.json(guests)
   })
 }
