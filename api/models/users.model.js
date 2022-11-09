@@ -12,14 +12,13 @@ const userSchema = new mongoose.Schema({
   birthDate:{
     type: Date,
   },
-  id:{
+  identification:{
     type: String,
     required: [true, 'ID is required']
   },
   reservation:{
     type:mongoose.Schema.Types.ObjectId,
     ref:'reservations',
-
   },
   email: {
     type: String,

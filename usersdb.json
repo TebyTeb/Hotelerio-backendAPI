@@ -1,0 +1,33 @@
+[
+    {
+        "name": "Leanne",
+        "surname":"Graham",
+        "birthDate": "1985-03-04",
+        "identification":"45257872Q",
+        "reservation":"",
+        "email": "sincere@april.biz",
+        "phone": 654755529,
+        "password": 123456,
+        "role":"client"
+    },
+    {
+        "name": "Ervin Howell",
+        "surname":"Howell",
+        "birthDate": "1989-03-31",
+        "identification":"4483201K",
+        "reservation":"",
+        "email": "shanna@melissa.tv",
+        "password": 123456,
+        "role":"client"
+    },
+    {
+        "name": "Clementine Bauch",
+        "surname":"Bauch",
+        "birthDate": "1982-02-28",
+        "identification":"4483201K",
+        "reservation":"",
+        "email": "nathan@yesenia.net",
+        "password": 123456,
+        "role":"client"
+    }
+]

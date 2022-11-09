@@ -1,0 +1,26 @@
+[
+    {
+        "roomNumber": 105,
+        "roomFloor": 1,
+        "typeOfRoom": "Standard",
+        "occupied": false,
+        "prepared":true,
+        "capacity": 2
+    },
+    {
+        "roomNumber": 205,
+        "roomFloor": 2,
+        "typeOfRoom": "Deluxe",
+        "occupied": true,
+        "prepared":false,
+        "capacity": 3
+    },
+    {
+        "roomNumber": 405,
+        "roomFloor": 4,
+        "typeOfRoom": "Suite",
+        "occupied": false,
+        "prepared":false,
+        "capacity": 5
+    }
+]
