@@ -32,7 +32,6 @@ function updateUser(req, res) {
   if (res.locals.user.role !== 'admin' && req.body.role !== undefined){
     req.body.role = res.locals.user.role
   }
-
   UserModel
     .findByIdAndUpdate(req.params.id, req.body, {
       new: true,

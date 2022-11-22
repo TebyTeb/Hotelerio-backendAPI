@@ -54,7 +54,6 @@ function createReserv(req, res) {
                         room.save()
                             .then(res.json(result))
                             .catch((err) => res.json(err))
-
                     })
                     .catch((err) => res.json(err))
             }
