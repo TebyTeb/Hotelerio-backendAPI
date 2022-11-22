@@ -13,7 +13,7 @@ const {
 } = require('../controllers/reservation.controller')
 
 router.get('/', authUser, adminCheck, getAllReservs)
-router.get('/:id', authUser, roleCheck, getReservById)        
+router.get('/:id', authUser, getReservById)        
 router.post('/', authUser, createReserv)            //Implement: link userID to reservation. Debate: link userID in reserv and reservID in user?
 router.put('/:id', authUser, roleCheck, updateReserv)          
 router.delete('/:id', authUser, roleCheck, deleteReservById)  

@@ -20,7 +20,7 @@ function getUserById(req, res) {
 
 function deleteUserById(req, res) {
     UserModel
-      .remove({id: req.params.id })
+      .remove({_id: req.params.id })
       .then(response => res.json(response))
       .catch(err => handleError(err, res))
 }
