@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema({
   birthDate:{
     type: Date,
   },
-  id:{
+  identification:{
     type: String,
     required: [true, 'ID is required']
   },
