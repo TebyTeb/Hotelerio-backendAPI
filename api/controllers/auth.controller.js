@@ -21,8 +21,7 @@ async function login(req, res) {
   try {
     const user = await UserModel.findOne({ email: req.body.email })
     if (!user) {
-      res.status(400).send('Email or password incorrect')
-      return
+      return res.status(400).json({ error: 'Email or password incorrect' }) 
     }
     bcrypt.compare(req.body.password, user.password, (err, result) => {
       if (err) throw new Error(err)

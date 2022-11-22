@@ -8,22 +8,17 @@ const {
 const {
     getAllUsers,
     getUserById,
+    getUserByEmail,
     deleteUserById,
     createUser,
     updateUser
 } = require('../controllers/users.controller')
 
-<<<<<<< HEAD
-router.get('/', authUser, getAllUsers)
-router.get('/:id',authUser, getUserById)
-router.put('/:id', authUser, updateUser)
-router.delete('/:id',authUser, deleteUserById)
-=======
 router.get('/', authUser, adminCheck, getAllUsers)
+router.get('/profile', authUser, roleCheck, getUserByEmail)
 router.get('/:id', authUser, roleCheck, getUserById)
 router.post('/',authUser,adminCheck,createUser)
 router.put('/:id', authUser, roleCheck, updateUser)
 router.delete('/:id', authUser, roleCheck, deleteUserById)
->>>>>>> main
 
 module.exports = router

@@ -2,12 +2,8 @@ const UserModel = require('../models/users.model')
 const bcrypt = require('bcrypt')
 const { handleError } = require('../utils')
 
-<<<<<<< HEAD
-function getAllUsers (req, res) {
-=======
 
 function getAllUsers(req, res) {
->>>>>>> main
   UserModel
     .find(req.query)
     .then(response => res.json(response))
@@ -20,6 +16,13 @@ function getUserById(req, res) {
       .findById(req.params.id)
       .then(response => res.json(response))
       .catch((err) => handleError(err, res))
+}
+
+function getUserByEmail(req, res) {
+  UserModel
+    .find(req.query)
+    .then(response => res.json(response))
+    .catch((err) => handleError(err, res))
 }
 
 function deleteUserById(req, res) {
@@ -54,6 +57,7 @@ function createUser(req,res){
 module.exports = {
   getAllUsers,
   getUserById,
+  getUserByEmail,
   createUser,
   deleteUserById,
   updateUser
