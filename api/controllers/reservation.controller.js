@@ -5,7 +5,7 @@ const { handleError } = require('../utils')
 
 function getAllReservs(req, res) {
   ReservModel
-    .find()
+    .find(req.query)
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
 }
@@ -50,10 +50,10 @@ function createReserv(req, res) {
       ReservModel
         .create(reserv)
         .then((result) => {
-          room.occupied = true
-          room.save()
-            .then(res.json(result))
-            .catch((err) => res.json(err))
+          //room.occupied = true
+          // room.save()
+          //   .then(res.json(result))
+          //   .catch((err) => res.json(err))
         })
         .catch((err) => res.json(err))
     }
