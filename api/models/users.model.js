@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
   },
   reservation:{
     type:mongoose.Schema.Types.ObjectId,
-    ref:'reservations',
+    ref:'reserv',
   },
   email: {
     type: String,
