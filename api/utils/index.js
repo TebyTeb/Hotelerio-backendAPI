@@ -29,7 +29,8 @@ function adminCheck (req, res, next) {
 function roleCheck (req, res, next) {
   if (res.locals.user.role === 'admin' || 
       res.locals.user._id.toString() === req.params.id || 
-      res.locals.user.email === req.query.email) {
+      res.locals.user.email === req.query.email ||
+      res.locals.user._id === req.query.client) {
     next()
   } else {
     res.status(403).json('Not Authorized')
