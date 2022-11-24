@@ -6,6 +6,7 @@ const { handleError } = require('../utils')
 function getAllReservs(req, res) {
   ReservModel
     .find(req.query)
+    .populate('room')
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
 }
