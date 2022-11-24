@@ -52,9 +52,9 @@ function createReserv(req, res) {
         .create(reserv)
         .then((result) => {
           //room.occupied = true
-          // room.save()
-          //   .then(res.json(result))
-          //   .catch((err) => res.json(err))
+          room.save()
+            .then(res.json(result))
+            .catch((err) => res.json(err))
         })
         .catch((err) => res.json(err))
     }
