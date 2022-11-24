@@ -4,11 +4,13 @@ const companionSchema = require('./companion.model')
 const reservSchema = new mongoose.Schema({
     client: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
         required: true
     },
 
     room: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'room',
         required: true
     },
     checkin: {
