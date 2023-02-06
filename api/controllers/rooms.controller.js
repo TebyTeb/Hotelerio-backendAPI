@@ -13,29 +13,28 @@ module.exports = {
   getOccupants
 }
 
-function getAllRooms(req, res) {
+function getAllRooms (req, res) {
   RoomModel
     .find(req.query)
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
-
 }
 
-function getRoomById(req, res) {
+function getRoomById (req, res) {
   RoomModel
     .findById(req.params.id)
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
 }
 
-function deleteRoomById(req, res) {
+function deleteRoomById (req, res) {
   RoomModel
     .remove({ _id: req.params.id })
     .then(response => res.json(response))
     .catch(err => handleError(err, res))
 }
 
-function updateRoom(req, res) {
+function updateRoom (req, res) {
   RoomModel
     .findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -44,14 +43,14 @@ function updateRoom(req, res) {
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
 }
-function createRoom(req, res) {
+function createRoom (req, res) {
   RoomModel.create(req.body)
     .then((room) => res.json(room))
     .catch((err) => res.json(err))
 }
 
-//Filter using queries, gte(greatherThanOrEqualTo), lte(LesserThanOrEqualTo)
-function checkAvailable(req, res) {
+// Filter using queries, gte(greatherThanOrEqualTo), lte(LesserThanOrEqualTo)
+function checkAvailable (req, res) {
   const userCheckin = new Date(req.query.checkin)
   const userCheckout = new Date(req.query.checkout)
 
@@ -74,13 +73,13 @@ function checkAvailable(req, res) {
     .catch((err) => handleError(err, res))
 }
 
-function getOccupants(req,res){
-  ReservModel.findOne({room: req.params.roomid})
-  .then(response =>{
-    console.log(response.companions)
-    let guests = {}
-    guests.client = res.locals.user.name+' '+res.locals.user.surname
-    guests.companions = response.companions
-    res.json(guests)
-  })
+function getOccupants (req, res) {
+  ReservModel.findOne({ room: req.params.roomid })
+    .then(response => {
+      console.log(response.companions)
+      const guests = {}
+      guests.client = res.locals.user.name + ' ' + res.locals.user.surname
+      guests.companions = response.companions
+      res.json(guests)
+    })
 }
